@@ -11,7 +11,6 @@
 include:
   - board: nice_nano
     shield: tritium_numpad
-
 #   - board: bdn9_rev2
 #   - board: nice_nano
 #     shield: reviung41
