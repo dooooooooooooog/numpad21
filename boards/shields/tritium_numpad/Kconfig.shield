@@ -1,0 +1,2 @@
+config SHIELD_TRITIUM_NUMPAD
+    def_bool $(shields_list_contains,tritium_numpad)
