@@ -1,0 +1,59 @@
+/*
+ * Tritium Numpad ZMK Keymap
+ * Converted from QMK Configurator JSON
+ *
+ * Layer 0: Numpad
+ * Layer 1: Function (hold LT(1,.) to activate)
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        /*
+         * ,-------------------.
+         * | CPY | PST |  (  |  )  |
+         * | NUM |  /  |  *  |  -  |
+         * |  7  |  8  |  9  |     |
+         * |  4  |  5  |  6  |  +  |
+         * |  1  |  2  |  3  |     |
+         * |    0    |LT1(.)| ENT |
+         * `-------------------'
+         */
+        default_layer {
+            bindings = <
+                &kp K_COPY  &kp K_PASTE &kp LPAR    &kp RPAR
+                &kp KP_NUM  &kp KP_SLASH &kp KP_ASTERISK &kp KP_MINUS
+                &kp KP_N7   &kp KP_N8   &kp KP_N9   &trans
+                &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp KP_PLUS
+                &kp KP_N1   &kp KP_N2   &kp KP_N3   &trans
+                &kp KP_N0               &lt 1 KP_DOT &kp KP_ENTER
+            >;
+        };
+
+        /*
+         * ,-------------------.
+         * | ESC | TAB | BSPC| =   |
+         * | NUM |  /  |  *  |  -  |
+         * |  7  |  8  |  9  |     |
+         * |  4  |  5  |  6  |BOOT |
+         * |  1  |  2  |  3  |     |
+         * |    0    |LT1(.)| ENT |
+         * `-------------------'
+         */
+        fn_layer {
+            bindings = <
+                &kp ESC     &kp TAB     &kp BSPC    &kp KP_EQUAL
+                &kp KP_NUM  &kp KP_SLASH &kp KP_ASTERISK &kp KP_MINUS
+                &kp KP_N7   &kp KP_N8   &kp KP_N9   &trans
+                &kp KP_N4   &kp KP_N5   &kp KP_N6   &bootloader
+                &kp KP_N1   &kp KP_N2   &kp KP_N3   &trans
+                &kp KP_N0               &lt 1 KP_DOT &kp KP_ENTER
+            >;
+        };
+    };
+};
