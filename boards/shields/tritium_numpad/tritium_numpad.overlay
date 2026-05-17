@@ -1,22 +1,8 @@
 /*
  * Tritium Numpad ZMK Shield Overlay
- * Controller: ProMicro NRF52840
+ * Controller: ProMicro NRF52840 (SuperMini NRF52840)
  *
- * ProMicro NRF52840 pin mapping (Pro Micro number → nRF GPIO):
- *   2  → P0.17
- *   3  → P0.20
- *   4  → P0.22
- *   5  → P0.24
- *   6  → P1.00
- *   7  → P0.11
- *   8  → P1.04
- *   9  → P1.06
- *   A0 → P0.31
- *   A1 → P0.29
- *   A2 → P0.02
- *   A3 → P1.15
- *
- * Wiring:
+ * Pin mapping (from official pinout diagram):
  *   Row 0 → pin 3  → P0.20
  *   Row 1 → pin 5  → P0.24
  *   Row 2 → pin 6  → P1.00
@@ -27,6 +13,8 @@
  *   Col 1 → A1     → P0.29
  *   Col 2 → A2     → P0.02
  *   Col 3 → A3     → P1.15
+ *
+ * diode-direction: row2col
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
@@ -55,7 +43,7 @@
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
-        diode-direction = "col2row";
+        diode-direction = "row2col";
 
         row-gpios
             = <&gpio0 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* Row 0: pin 3  */
@@ -67,10 +55,10 @@
             ;
 
         col-gpios
-            = <&gpio0 31 GPIO_ACTIVE_HIGH>   /* Col 0: A0 */
-            , <&gpio0 29 GPIO_ACTIVE_HIGH>   /* Col 1: A1 */
-            , <&gpio0  2 GPIO_ACTIVE_HIGH>   /* Col 2: A2 */
-            , <&gpio1 15 GPIO_ACTIVE_HIGH>   /* Col 3: A3 */
+            = <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* Col 0: A0 */
+            , <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* Col 1: A1 */
+            , <&gpio0  2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* Col 2: A2 */
+            , <&gpio1 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>   /* Col 3: A3 */
             ;
     };
 };
